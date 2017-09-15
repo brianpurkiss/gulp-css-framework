@@ -93,9 +93,6 @@ gulp.task('sass', function () {
 		// Final output
 		.pipe(gulp.dest( styleDestination ))
 
-		// #todo
-		//.pipe(reload({stream:true}))
-
 });
 
 
