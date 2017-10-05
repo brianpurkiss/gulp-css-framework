@@ -37,6 +37,9 @@ Runs `gulp scripts` but watches the Javascript files and auto compiles when savi
 
 Consolidates and compresses Javascript files for a production environment, but doesn't include development utilities like sourcemap.
 
+`gulp --tasks`
+
+This provides a list of available gulp commands if you can't remember them. Gulp commands are case sensitive. 
 
 
 ## Usage Instructions
@@ -60,14 +63,14 @@ gulp
 
 ### When Working on the Project
 
-* Turn on file watch (gulp commands are case sensitive)
+* Turn on file watch for CSS
 ```
 gulp sassWatch
 ```
 * Work within the .scss files instead of the .css files
 * Use ctrl+c to stop watching
 
-* Turn on file watch (gulp commands are case sensitive)
+* Turn on file watch for JS
 ```
 gulp scriptsWatch
 ```
@@ -76,8 +79,9 @@ gulp scriptsWatch
 
 ### SCSS Conventions to Work With
 
-* Include additional SCSS files with @import ‘fileName’;
+* Include additional SCSS files with @import ‘file-name’;
 * Use double slash (//) for stylesheet comments, these comments will be removed upon compiling.
+* Use the bootstrap-variables file for global variables. Localized variables can be contained in the relevent file.
 
 
 # Debugging
