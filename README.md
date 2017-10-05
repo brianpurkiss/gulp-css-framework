@@ -31,25 +31,7 @@ npm install
 gulp sass
 ```
 
-### When Working on the Project
-
-* Turn on file watch (gulp commands are case sensitive)
-```
-gulp sassWatch
-```
-* Work within the .scss files instead of the .css files
-* Use ctrl+c to stop watching
-
-Conventions to Work With
-
-* Include additional SCSS files with @import ‘fileName’;
-* Use double slash (//) for stylesheet comments, these comments will be removed upon compiling.
-* Use an underscore at the beginning of new file names. That tells SASS to not compile that file into its own file, but it will still be compiled into the master file if it's been imported.
-* Include global variables (like new colors, etc) in the BootstrapVariables folder. That makes it easier to break out the site into multiple CSS files if the scope of the website calls for it. This also helps prevent ordering issues.
-
-## Learn SASS
-
-http://sass-lang.com/guide
+### Check readme in the gulp folder for additional instructions
 
 ## License
 
