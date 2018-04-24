@@ -5,6 +5,9 @@
 
 // START Editing Project Variables.
 // Project related.
+															// #todo
+															// var project							 = 'WPGulpTheme'; // Project Name.
+var projectURL					= 'boilerplate.dev'; // Local project URL of your already running WordPress site.
 
 // Style related.
 var srcPrimaryStyle			= '../styles/*.scss', // Path to main .scss file.
@@ -28,6 +31,7 @@ var concat				= require('gulp-concat'); // Concatenates JS files
 var uglify				= require('gulp-uglify'); // Minifies JS files
 var browserify		= require('gulp-browserify');
 var jshint				= require('gulp-jshint');
+var jsImport			= require('gulp-js-import');
 
 // Utility related plugins.
 var lineec				= require('gulp-line-ending-corrector'); // Consistent Line Endings for non UNIX systems. Gulp Plugin for Line Ending Corrector (A utility that makes sure your files have consistent line endings)
@@ -39,8 +43,36 @@ var notify				= require('gulp-notify'); // Sends message notification to you
 
 
 
+// #todo
+// Browser sync
+var browserSync = require('browser-sync'); // Auto updating browsers for development
+var reload			= browserSync.reload; // For manual browser reload.
+
+
+
 // Sets the default Gulp task
 gulp.task('default',['sass']);
+
+
+// #todo
+// browser-sync task
+
+gulp.task( 'browser-sync', function() {
+	browserSync.init( {
+		// Project URL
+		proxy: projectURL,
+
+		// Automatically open the browser when starting the task
+		open: true,
+
+		// Inject CSS changes.
+		injectChanges: true,
+
+		// Use a specific port instead of the auto-detected port
+		// port: 3000,
+
+	} );
+});
 
 
 // create the error message
@@ -52,6 +84,7 @@ var onError = function (err) {
 	 console.log(err.toString());
 	 this.emit('end');
 }
+
 
 
 
@@ -92,6 +125,9 @@ gulp.task('sass', function () {
 
 		// Final output
 		.pipe(gulp.dest( styleDestination ))
+
+		// #todo
+		//.pipe(reload({stream:true}))
 
 });
 
@@ -140,26 +176,13 @@ gulp.task('prodSASS', function () {
 
 
 
-
 // compile javascript files
 
 gulp.task('scripts', function() {
-	return gulp.src(jsFiles)
+	return gulp.src('../js/scripts.js')
+		.pipe(jsImport({hideConsole: true}))
+		.pipe(gulp.dest('../js/dist'));
 
-		// Errors and sourcempas
-		.pipe( sourcemaps.init() )
-		.pipe(concat('scripts.js'))
-		.pipe(gulp.dest(jsDest))
-
-		.pipe(uglify())
-		.on('error', console.error.bind(console))
-		.pipe( sourcemaps.write( { includeContent: false } ) )
-		.pipe( sourcemaps.init( { loadMaps: true } ) )
-
-		// Write sourcemaps
-		.pipe( sourcemaps.write ( jsDest ) )
-
-		.pipe(gulp.dest(jsDest));
 });
 
 
@@ -173,11 +196,10 @@ gulp.task('scriptsWatch', function () {
 // compile javascript files for production, compressed for production
 
 gulp.task('prodScripts', function() {
-	return gulp.src(jsFiles)
-		.pipe(concat('scripts.js'))
-		.pipe(gulp.dest(jsDest))
+	return gulp.src('../js/scripts.js')
+		.pipe(jsImport({hideConsole: true}))
 		.pipe(uglify())
-		.pipe(gulp.dest(jsDest));
+		.pipe(gulp.dest('../js/dist'));
 
 });
 

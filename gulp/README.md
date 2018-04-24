@@ -27,7 +27,7 @@ Auto refreshes local dev environment when saving files.
 
 `gulp scripts`
 
-Consolidates javascript files with sourcemap and debugging for development.
+Uses "@import" in scripts.js to order and consolidate the listed JS files.
 
 `gulp scriptsWatch`
 
@@ -35,11 +35,8 @@ Runs `gulp scripts` but watches the Javascript files and auto compiles when savi
 
 `gulp prodScripts`
 
-Consolidates and compresses Javascript files for a production environment, but doesn't include development utilities like sourcemap.
+Consolidates and compresses Javascript files for a production environment.
 
-`gulp --tasks`
-
-This provides a list of available gulp commands if you can't remember them. Gulp commands are case sensitive. 
 
 
 ## Usage Instructions
@@ -63,14 +60,14 @@ gulp
 
 ### When Working on the Project
 
-* Turn on file watch for CSS
+* Turn on file watch (gulp commands are case sensitive)
 ```
 gulp sassWatch
 ```
 * Work within the .scss files instead of the .css files
 * Use ctrl+c to stop watching
 
-* Turn on file watch for JS
+* Turn on file watch (gulp commands are case sensitive)
 ```
 gulp scriptsWatch
 ```
@@ -79,9 +76,8 @@ gulp scriptsWatch
 
 ### SCSS Conventions to Work With
 
-* Include additional SCSS files with @import ‘file-name’;
+* Include additional SCSS files with @import ‘fileName’;
 * Use double slash (//) for stylesheet comments, these comments will be removed upon compiling.
-* Use the bootstrap-variables file for global variables. Localized variables can be contained in the relevent file.
 
 
 # Debugging
@@ -90,6 +86,6 @@ Terminal error message: **Cannot find module 'XXXX'**
 
 That means you forgot to run npm install, something went wrong with the install, or the package.json file is missing a module.
 
-In Terminal/Command Line, run `npm install XXX` where XXX is the name of the module listed in the error message. 
+In Terminal/Command Line, run `npm install XXX` where XXX is the name of the module listed in the error message.
 
 Notify the lead dev of the error so we can add the proper module to the package.json file.
