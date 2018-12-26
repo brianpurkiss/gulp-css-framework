@@ -45,8 +45,8 @@ var notify				= require('gulp-notify'); // Sends message notification to you
 
 // #todo
 // Browser sync
-var browserSync = require('browser-sync'); // Auto updating browsers for development
-var reload			= browserSync.reload; // For manual browser reload.
+// var browserSync = require('browser-sync'); // Auto updating browsers for development
+// var reload			= browserSync.reload; // For manual browser reload.
 
 
 
@@ -182,7 +182,6 @@ gulp.task('scripts', function() {
 	return gulp.src('../js/scripts.js')
 		.pipe(jsImport({hideConsole: true}))
 		.pipe(gulp.dest('../js/dist'));
-
 });
 
 

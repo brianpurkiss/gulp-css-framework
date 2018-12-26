@@ -1,17 +1,19 @@
 
-// Font Awesome 5.0.3 - https://fontawesome.com/ - @fontawesome
+// Font Awesome 5.6.3 - https://fontawesome.com/ - @fontawesome
+@import "fontawesome-variables";
 @import "font-awesome/fontawesome";
+@import "font-awesome/regular";
+// @import "font-awesome/solid";
+// @import "font-awesome/brands";
 
 
-// Boostrap
-@import "bootstrap/functions";			// Boostrap functions, required before bootstrap variables
-@import 'bootstrap-variables';			// import bootstrap variables
-@import 'bootstrap/bootstrap';			// import bootstrap
+// Boostrap 4.2.1 - https://getbootstrap.com/
+@import 'bootstrap-variable-overrides';		// import bootstrap variables
+@import 'bootstrap/bootstrap';						// import bootstrap
 
 // Globals
-@import "abstracts/typography";     // Possible conflict with this typography and bootstrap typography
-@import "abstracts/base";           // Custom global styles
-@import "abstracts/animations";			// Global animations
+@import "abstracts/globals";							// Custom global styles
+@import "abstracts/animations";						// Global animations
 
 
 // Main site layout
