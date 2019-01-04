@@ -20,11 +20,6 @@ Runs `gulp sass` but watches the sass files and auto compiles when saving files.
 
 Compiles and compresses Sass for a production environment, but doesn't include development utilities like sourcemap.
 
-`gulp browser-sync`
-
-Auto refreshes local dev environment when saving files.
-(not yet working)
-
 `gulp scripts`
 
 Uses "@import" in scripts.js to order and consolidate the listed JS files.
