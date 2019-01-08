@@ -20,14 +20,9 @@ Runs `gulp sass` but watches the sass files and auto compiles when saving files.
 
 Compiles and compresses Sass for a production environment, but doesn't include development utilities like sourcemap.
 
-`gulp browser-sync`
-
-Auto refreshes local dev environment when saving files.
-(not yet working)
-
 `gulp scripts`
 
-Consolidates javascript files with sourcemap and debugging for development.
+Uses "@import" in scripts.js to order and consolidate the listed JS files.
 
 `gulp scriptsWatch`
 
@@ -35,7 +30,7 @@ Runs `gulp scripts` but watches the Javascript files and auto compiles when savi
 
 `gulp prodScripts`
 
-Consolidates and compresses Javascript files for a production environment, but doesn't include development utilities like sourcemap.
+Consolidates and compresses Javascript files for a production environment.
 
 
 
@@ -86,6 +81,6 @@ Terminal error message: **Cannot find module 'XXXX'**
 
 That means you forgot to run npm install, something went wrong with the install, or the package.json file is missing a module.
 
-In Terminal/Command Line, run `npm install XXX` where XXX is the name of the module listed in the error message. 
+In Terminal/Command Line, run `npm install XXX` where XXX is the name of the module listed in the error message.
 
 Notify the lead dev of the error so we can add the proper module to the package.json file.
