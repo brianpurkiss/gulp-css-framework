@@ -45,3 +45,4 @@ node_modules
 *.cfs
 *.del
 *.tmp
+styles/style.scss
