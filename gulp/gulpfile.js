@@ -4,14 +4,11 @@
 
 
 // START Editing Project Variables.
-// Project related.
-															// #todo
-															// var project							 = 'WPGulpTheme'; // Project Name.
-var projectURL					= 'boilerplate.dev'; // Local project URL of your already running WordPress site.
 
 // Style related.
 var srcPrimaryStyle			= '../styles/*.scss', // Path to main .scss file.
 		srcWorkingStyles		= '../styles/*/*.scss', // Path to work folders
+		srcMoreWorkingStyles		= '../styles/*/*/*.scss', // Path to work folders
 		styleDestination		= '../styles/'; // Path to place the compiled CSS file.
 
 // JS related
@@ -36,43 +33,18 @@ var jsImport			= require('gulp-js-import');
 // Utility related plugins.
 var lineec				= require('gulp-line-ending-corrector'); // Consistent Line Endings for non UNIX systems. Gulp Plugin for Line Ending Corrector (A utility that makes sure your files have consistent line endings)
 var sourcemaps		= require('gulp-sourcemaps'); // Maps code in a compressed file (E.g. style.css) back to it’s original position in a source file (E.g. structure.scss)
-var plumber			 = require('gulp-plumber');
+var plumber			 	= require('gulp-plumber');
 var notify				= require('gulp-notify'); // Sends message notification to you
 	// check requirements for notify to work: https://www.npmjs.com/package/gulp-notify
 	// Works out of the box on OS X and Windows 8 or higher
 
 
 
-// #todo
-// Browser sync
-// var browserSync = require('browser-sync'); // Auto updating browsers for development
-// var reload			= browserSync.reload; // For manual browser reload.
-
 
 
 // Sets the default Gulp task
 gulp.task('default',['sass']);
 
-
-// #todo
-// browser-sync task
-
-gulp.task( 'browser-sync', function() {
-	browserSync.init( {
-		// Project URL
-		proxy: projectURL,
-
-		// Automatically open the browser when starting the task
-		open: true,
-
-		// Inject CSS changes.
-		injectChanges: true,
-
-		// Use a specific port instead of the auto-detected port
-		// port: 3000,
-
-	} );
-});
 
 
 // create the error message
@@ -113,7 +85,7 @@ gulp.task('sass', function () {
 
 		// Autoprefix
 		.pipe(autoprefixer({
-			browsers: ['last 2 versions'],
+			overrideBrowserslist: ['last 2 versions'],
 			cascade: false
 		}))
 
@@ -138,7 +110,8 @@ gulp.task('sass', function () {
 gulp.task('sassWatch', function () {
 	gulp.watch([
 		srcPrimaryStyle,
-		srcWorkingStyles
+		srcWorkingStyles,
+		srcMoreWorkingStyles
 	], ['sass']);
 });
 
@@ -163,7 +136,7 @@ gulp.task('prodSASS', function () {
 
 		// Autoprefix
 		.pipe(autoprefixer({
-			browsers: ['last 2 versions'],
+			overrideBrowserslist: ['last 2 versions'],
 			cascade: false
 		}))
 
