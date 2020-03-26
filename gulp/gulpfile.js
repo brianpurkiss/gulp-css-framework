@@ -46,6 +46,9 @@ var notify				= require('gulp-notify'); // Sends message notification to you
 gulp.task('default',['sass']);
 
 
+// Run this command when initially opening a project after changing branches
+gulp.task('init', ['sass', 'scripts']);
+
 
 // create the error message
 var onError = function (err) {
